@@ -11,17 +11,18 @@ duplicated_item_priorities = []
 for rucksack in rucksacks:
     half_index = int(len(rucksack)/2)
     first_half, second_half = rucksack[:half_index], rucksack[half_index:]
-    for item in set(first_half):
+    for item in first_half:
         if item in second_half:
             duplicated_item_priorities.append(get_priority(item))
+            break
 
 print(sum(duplicated_item_priorities))
 
 badges_priorities = []
 for first_rucksack_index in range(0, len(rucksacks), 3):
-    rucksack_1, rucksack_2, rucksack_3 = set(rucksacks[first_rucksack_index]), set(rucksacks[first_rucksack_index+1]), set(rucksacks[first_rucksack_index+2])
-    for item in rucksack_1:
-        if item in rucksack_2 and item in rucksack_3:
+    for item in rucksacks[first_rucksack_index]:
+        if item in rucksacks[first_rucksack_index+1] and item in rucksacks[first_rucksack_index+2]:
             badges_priorities.append(get_priority(item))
+            break
 
 print(sum(badges_priorities))
