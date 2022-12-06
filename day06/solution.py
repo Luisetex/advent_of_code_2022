@@ -1,5 +1,3 @@
-from functools import reduce
-
 with open("input.txt", "r") as input_file:
     packet = input_file.read()
 
