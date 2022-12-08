@@ -76,11 +76,11 @@ def compute_scenic_score(rows, columns, row_index, column_index):
 
 
 scenic_scores = map(
-    lambda enum_rows: map(
-        lambda enum_cols: compute_scenic_score(rows, columns, enum_rows[0], enum_cols[0]),
-        enumerate(columns),
+    lambda row_index: map(
+        lambda columm_index: compute_scenic_score(rows, columns, row_index, columm_index),
+        range(len(columns)),
     ),
-    enumerate(rows),
+    range(len(rows)),
 )
 
 print(max(reduce(lambda row1, row2: list(row1) + list(row2), scenic_scores, [])))
